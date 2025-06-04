@@ -7,28 +7,28 @@ const teamMembers = ref([
     name: "John Anderson",
     position: "Founder & Master Plumber",
     bio: "John founded Ace Plumbing in 2005 with over 15 years of experience in the plumbing industry. He holds multiple certifications and is dedicated to providing the highest quality plumbing services to San Francisco residents.",
-    avatar: "/team-member-1.jpg"
+    avatar: "/images/team-member-1.jpg"
   },
   {
     id: 2,
     name: "Sarah Martinez",
     position: "Operations Manager",
     bio: "Sarah oversees all day-to-day operations at Ace Plumbing. With her background in business management and customer service, she ensures that every client receives prompt, professional service from start to finish.",
-    avatar: "/team-member-2.jpg"
+    avatar: "/images/team-member-2.jpg"
   },
   {
     id: 3,
     name: "Michael Chen",
     position: "Senior Technician",
     bio: "Michael has been with Ace Plumbing for over 8 years and specializes in complex plumbing installations and repairs. His attention to detail and problem-solving skills make him an invaluable member of our team.",
-    avatar: "/team-member-3.jpg"
+    avatar: "/images/team-member-3.jpg"
   },
   {
     id: 4,
     name: "Emily Johnson",
     position: "Customer Service Manager",
     bio: "Emily leads our customer service team, ensuring that every client interaction exceeds expectations. Her friendly demeanor and commitment to client satisfaction have helped build our reputation for excellent service.",
-    avatar: "/team-member-4.jpg"
+    avatar: "/images/team-member-4.jpg"
   }
 ]);
 
@@ -148,8 +148,10 @@ const milestones = ref([
     <!-- Our Values Section -->
     <section class="section values-section">
       <div class="container">
-        <h2 class="section-title text-center">Our Values</h2>
-        <p class="section-subtitle text-center mb-4">The principles that guide everything we do</p>
+        <div class="section-header">
+          <h2 class="section-title text-center">Our Values</h2>
+          <p class="section-subtitle text-center mb-4">The principles that guide everything we do</p>
+        </div>
         
         <div class="values-grid">
           <div v-for="value in values" :key="value.id" class="value-card">
@@ -164,8 +166,10 @@ const milestones = ref([
     <!-- Company Timeline Section -->
     <section class="section timeline-section">
       <div class="container">
-        <h2 class="section-title text-center">Our Journey</h2>
-        <p class="section-subtitle text-center mb-4">Key milestones in our company's history</p>
+        <div class="section-header">
+          <h2 class="section-title text-center">Our Journey</h2>
+          <p class="section-subtitle text-center mb-4">Key milestones in our company's history</p>
+        </div>
         
         <div class="timeline">
           <div v-for="(milestone, index) in milestones" :key="index" class="timeline-item">
@@ -182,8 +186,13 @@ const milestones = ref([
     <!-- Team Section -->
     <section class="section team-section">
       <div class="container">
-        <h2 class="section-title text-center">Meet Our Team</h2>
-        <p class="section-subtitle text-center mb-4">The professionals behind our exceptional service</p>
+        <div class="team-header">
+          <h2 class="section-title text-center">
+            <span class="meet-our">meet our</span>
+            <span class="team">Team</span>
+          </h2>
+          <p class="section-subtitle text-center mb-4">The professionals behind our exceptional service</p>
+        </div>
         
         <div class="team-grid">
           <div v-for="member in teamMembers" :key="member.id" class="team-card">
@@ -200,26 +209,7 @@ const milestones = ref([
       </div>
     </section>
 
-    <!-- Blog Authors Section -->
-    <section class="section authors-section">
-      <div class="container">
-        <h2 class="section-title text-center">Our Blog Authors</h2>
-        <p class="section-subtitle text-center mb-4">The experts behind our informative plumbing content</p>
-        
-        <div class="authors-grid">
-          <div v-for="author in blogAuthors" :key="author.id" class="author-card">
-            <div class="author-image">
-              <img :src="author.avatar" :alt="author.name">
-            </div>
-            <div class="author-info">
-              <h3>{{ author.name }}</h3>
-              <p class="position">{{ author.position }}</p>
-              <p class="bio">{{ author.bio }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    
 
     <!-- CTA Section -->
     <section class="section cta-section">
@@ -422,25 +412,44 @@ const milestones = ref([
   color: white;
 }
 
+.section-header {
+  text-align: center;
+  margin-bottom: 5rem;
+  position: relative;
+}
+
 .section-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 800;
-  background: linear-gradient(135deg, #60a5fa, #a78bfa, #34d399);
+  font-size: 4rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-transform: uppercase;
-  letter-spacing: -2px;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  border-radius: 2px;
 }
 
 .section-subtitle {
-  font-size: 1.4rem;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+  color: #94a3b8;
   max-width: 600px;
   margin: 0 auto;
-  line-height: 1.6;
-  font-weight: 300;
+  line-height: 1.8;
+  position: relative;
+  padding-top: 2rem;
 }
 
 .timeline {
@@ -701,5 +710,30 @@ const milestones = ref([
   .cta-content p {
     font-size: 1.2rem;
   }
+}
+
+.team-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.meet-our {
+  display: block;
+  font-size: 3rem;
+  color: #60a5fa;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.team {
+  display: block;
+  font-size: 5rem;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+  letter-spacing: 4px;
 }
 </style>

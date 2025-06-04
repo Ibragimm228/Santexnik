@@ -13,21 +13,21 @@ const testimonials = ref([
     quote: "Ace Plumbing saved us during a major water leak emergency. Their team arrived within 30 minutes and fixed the issue professionally. Highly recommended!",
     author: "Michael Johnson",
     location: "Noe Valley, San Francisco",
-    avatar: "/testimonial-1.jpg"
+    avatar: "/images/author-1.jpg"
   },
   {
     id: 2,
     quote: "We've been using Ace Plumbing for all our plumbing needs for over 5 years. Their technicians are always professional, on time, and provide excellent service.",
     author: "Sarah Williams",
     location: "Parkside, San Francisco",
-    avatar: "/testimonial-2.jpg"
+    avatar: "/images/author-2.jpg"
   },
   {
     id: 3,
     quote: "The team at Ace Plumbing installed our new water heater quickly and efficiently. Fair pricing and great workmanship!",
     author: "David Chen",
     location: "Castro, San Francisco",
-    avatar: "/testimonial-3.jpg"
+    avatar: "/images/author-3.jpg"
   }
 ]);
 
@@ -346,8 +346,8 @@ onMounted(() => {
         </div>
         
         <p class="text-center mt-4 text-white">
-  Don't see your area? <a href="/contact-us">Contact us</a> to check if we service your location.
-</p>
+          Don't see your area? <a href="/contact-us">Contact us</a> to check if we service your location.
+        </p>
 
       </div>
     </section>
